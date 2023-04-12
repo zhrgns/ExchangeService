@@ -1,4 +1,4 @@
-package edu.sabanciuniv.sabanci05.exception;
+package edu.sabanciuniv.exchangecurrency.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,20 +16,34 @@ public class RestErrorHandler {
 
     @ExceptionHandler({UnauthorizedException.class})
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public ResponseEntity<BookApiExceptionTemplate> handleException(UnauthorizedException e) {
-        BookApiExceptionTemplate template = getBookApiExceptionTemplate(e.getMessage(), HttpStatus.UNAUTHORIZED);
+    public ResponseEntity<ExchangeApiExceptionTemplate> handleException(UnauthorizedException e) {
+        ExchangeApiExceptionTemplate template = getExchangeApiExceptionTemplate(e.getMessage(), HttpStatus.UNAUTHORIZED);
         return new ResponseEntity<>(template, HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler({IllegalArgumentException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<BookApiExceptionTemplate> handleException(IllegalArgumentException e) {
-        BookApiExceptionTemplate template = getBookApiExceptionTemplate(e.getMessage(), HttpStatus.BAD_REQUEST);
+    public ResponseEntity<ExchangeApiExceptionTemplate> handleException(IllegalArgumentException e) {
+        ExchangeApiExceptionTemplate template = getExchangeApiExceptionTemplate(e.getMessage(), HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(template, HttpStatus.BAD_REQUEST);
     }
 
-    private BookApiExceptionTemplate getBookApiExceptionTemplate(String message, HttpStatus status) {
-        BookApiExceptionTemplate template = new BookApiExceptionTemplate();
+    @ExceptionHandler({NoSuchPairException.class})
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<ExchangeApiExceptionTemplate> handleException(NoSuchPairException e) {
+        ExchangeApiExceptionTemplate template = getExchangeApiExceptionTemplate(e.getMessage(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(template, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler({NoSuchTransactionException.class})
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<ExchangeApiExceptionTemplate> handleException(NoSuchTransactionException e) {
+        ExchangeApiExceptionTemplate template = getExchangeApiExceptionTemplate(e.getMessage(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(template, HttpStatus.NOT_FOUND);
+    }
+
+    private ExchangeApiExceptionTemplate getExchangeApiExceptionTemplate(String message, HttpStatus status) {
+        ExchangeApiExceptionTemplate template = new ExchangeApiExceptionTemplate();
         template.setExceptionMessage(message);
         template.setStatusCode(status.value());
         template.setExceptionDate(LocalDateTime.now());
@@ -39,7 +53,7 @@ public class RestErrorHandler {
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
-    class BookApiExceptionTemplate {
+    static class ExchangeApiExceptionTemplate {
         private int statusCode;
         private String exceptionMessage;
         private LocalDateTime exceptionDate;

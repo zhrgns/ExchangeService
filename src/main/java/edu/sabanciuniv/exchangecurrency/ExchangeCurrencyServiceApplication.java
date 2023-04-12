@@ -1,4 +1,4 @@
-package edu.sabanciuniv.exchangecurrencyservice;
+package edu.sabanciuniv.exchangecurrency;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -6,5 +6,8 @@ import lombok.Data;
 
 @Data
 @Builder
-public class RateResponse {
+public class RateRequest {
+
+    private String target;
+    private String source;
 }

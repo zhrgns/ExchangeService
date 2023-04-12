@@ -1,4 +1,4 @@
-package edu.sabanciuniv.exchangecurrencyservice.model;
+package edu.sabanciuniv.exchangecurrency.model;
 
 
 import lombok.Data;

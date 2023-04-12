@@ -1,4 +1,4 @@
-package edu.sabanciuniv.exchangecurrency.service;
+package edu.sabanciuniv.exchangecurrency.exception;
 
 public class NoSuchPairException extends RuntimeException {
 

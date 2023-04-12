@@ -1,4 +1,4 @@
-package edu.sabanciuniv.exchangecurrencyservice;
+package edu.sabanciuniv.exchangecurrency;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

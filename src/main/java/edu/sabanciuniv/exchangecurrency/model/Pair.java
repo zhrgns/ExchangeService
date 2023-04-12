@@ -1,4 +1,4 @@
-package edu.sabanciuniv.exchangecurrencyservice.model;
+package edu.sabanciuniv.exchangecurrency.model;
 
 
 import jakarta.persistence.Entity;
@@ -22,6 +22,7 @@ public class Pair {
     private String target;
     private String source;
     private double rate;
+
 
 
 }
